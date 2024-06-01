@@ -5,7 +5,7 @@ import math
 class ShopIA:
     # Init
     def __int__(self):
-        # VideoCapture
+        # Dimensiones de captura de video
         self.cap = cv2.VideoCapture(1)
         self.cap.set(3, 1280)
         self.cap.set(4, 720)
@@ -28,7 +28,7 @@ class ShopIA:
                      'wine glass','cup','fork','knife','spoon','bowl','banana','apple','sandwich','orange','broccoli','carrot',
                      'hot dog','pizza','donut','cake','chair','couch','potted plant','bed','dining table','toilet','tv','laptop',
                      'mouse','remote','keyboard','cell phone','microwave','oven','toaster','sink','refrigerator','book','clock','vase',
-                     'scissors','teddy bear','hair drier','toothbrush']
+                     'scissors','hair drier','toothbrush']
         self.clsObject = clsObject
 
         # Bills Bank
@@ -82,7 +82,7 @@ class ShopIA:
         list_area_xi, list_area_yi, list_area_xf, list_area_yf = self.area(frame, 0.7739, 0.6250, 0.9649, 0.9444)
         size_obj, thickness_obj = 0.60, 1
 
-        # Add shopping list with price
+        # Agregando lista de compra con precios
         # Bolso
         if object == 'donut' not in [item[0] for item in self.shopping_list]:
             price = list_products['donut']
