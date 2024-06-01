@@ -60,7 +60,17 @@ Este proyecto utiliza técnicas de inteligencia artificial para reconocer y clas
     ```bash
         python Tienda.py
 
-## Observaciones
+## Ejemplos de uso
+
+- **Ejemplo 1:** Detección de bananas y botella con sus correspondientes porcentajes de confianza.
+![image](https://github.com/bryan-egc/Reconocimiento-Imagenes-Tienda/assets/41811332/cfe704d4-a74a-4ce5-a99c-c230ae807429)
+
+- **Ejemplo 2:** Detección de mouse y teclado con sus correspondientes porcentajes de confianza.
+![image](https://github.com/bryan-egc/Reconocimiento-Imagenes-Tienda/assets/41811332/078e3a87-ffcf-48fb-b289-76a27bdb915e)
+
+- **Ejemplo 3:** Detección de cuchillo, cuchara y tijeras con sus correspondientes porcentajes de confianza.
+![image](https://github.com/bryan-egc/Reconocimiento-Imagenes-Tienda/assets/41811332/3952f857-ef7f-4070-b25a-2ef37d73b6ac)
+
 
 ## Observaciones
 
