@@ -71,7 +71,7 @@ class ShopIA:
     def marketplace_list(self, frame, object):
         list_products = {'donut':25, 'cell phone':3500, 'bottle':10, 'cup':20, 'fork':3, 'knife':10, 'spoon':20,
                          'banana':5, 'apple':10, 'orange':5, 'broccoli':5, 'carrot':10, 'mouse':600, 'keyboard':1000,
-                         'book':250, 'clock':4000, 'scissors':25, 'toothbrush':20}
+                         'book':250, 'clock':600, 'scissors':25, 'toothbrush':20}
 
         # Text Config
         list_area_xi, list_area_yi, list_area_xf, list_area_yf = self.area(frame, 0.7739, 0.6250, 0.9649, 0.9444)
