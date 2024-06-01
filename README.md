@@ -52,7 +52,8 @@ Este proyecto utiliza técnicas de inteligencia artificial para reconocer y clas
     - Asegúrate de tener Python 3.x instalado.
     - Instala las dependencias requeridas (puedes utilizar un entorno virtual):
     ```bash
-        pip install -r requirements.txt
+        pip install opencv-python
+        pip install ultralytics
 4. **Descargar los modelos:**
     - Descarga los modelos YOLOv8 desde este enlace: https://drive.google.com/drive/folders/1RlE-Hz7JqQZ5wcb5P_Ooc8ypKeC1nCDZ
     - Coloca los archivos descargados en la carpeta Modelos dentro del directorio del proyecto.
