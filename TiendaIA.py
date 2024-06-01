@@ -88,7 +88,7 @@ class ShopIA:
             price = list_products['handbag']
             self.shopping_list.append([object, price])
             # Show
-            text = f'{object} --> ${price}'
+            text = f'{object} --> Q{price}'
             frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
                                    list_area_yi + (40 + (self.posicion_products * 20)),
                                    size_obj, thickness_obj, back=False)
@@ -101,7 +101,7 @@ class ShopIA:
             price = list_products['sports ball']
             self.shopping_list.append([object, price])
             # Show
-            text = f'{object} --> ${price}'
+            text = f'{object} --> Q{price}'
             frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
                                    list_area_yi + (40 + (self.posicion_products * 20)),
                                    size_obj, thickness_obj, back=False)
@@ -114,7 +114,7 @@ class ShopIA:
             price = list_products['bottle']
             self.shopping_list.append([object, price])
             # Show
-            text = f'{object} --> ${price}'
+            text = f'{object} --> Q{price}'
             frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
                                    list_area_yi + (40 + (self.posicion_products * 20)),
                                    size_obj, thickness_obj, back=False)
@@ -127,7 +127,7 @@ class ShopIA:
             price = list_products['cup']
             self.shopping_list.append([object, price])
             # Show
-            text = f'{object} --> ${price}'
+            text = f'{object} --> Q{price}'
             frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
                                    list_area_yi + (40 + (self.posicion_products * 20)),
                                    size_obj, thickness_obj, back=False)
@@ -140,7 +140,7 @@ class ShopIA:
             price = list_products['fork']
             self.shopping_list.append([object, price])
             # Show
-            text = f'{object} --> ${price}'
+            text = f'{object} --> Q{price}'
             frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,list_area_yi + (40 + (self.posicion_products * 25)),
                                    size_obj, thickness_obj,back=False)
             self.posicion_products += 1
@@ -152,7 +152,7 @@ class ShopIA:
             price = list_products['knife']
             self.shopping_list.append([object, price])
             # Show
-            text = f'{object} --> ${price}'
+            text = f'{object} --> Q{price}'
             frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
                                    list_area_yi + (40 + (self.posicion_products * 20)),
                                    size_obj, thickness_obj, back=False)
@@ -165,7 +165,7 @@ class ShopIA:
             price = list_products['spoon']
             self.shopping_list.append([object, price])
             # Show
-            text = f'{object} --> ${price}'
+            text = f'{object} --> Q{price}'
             frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
                                    list_area_yi + (40 + (self.posicion_products * 20)),
                                    size_obj, thickness_obj, back=False)
@@ -177,7 +177,7 @@ class ShopIA:
             price = list_products['banana']
             self.shopping_list.append([object, price])
             # Show
-            text = f'{object} --> ${price}'
+            text = f'{object} --> Q{price}'
             frame = self.draw_text(frame, (0,255,0), text, list_area_xi+10, list_area_yi+(40 + (self.posicion_products*20)),
                                    size_obj, thickness_obj, back=False)
             self.posicion_products += 1
@@ -188,7 +188,7 @@ class ShopIA:
             price = list_products['apple']
             self.shopping_list.append([object, price])
             # Show
-            text = f'{object} --> ${price}'
+            text = f'{object} --> Q{price}'
             frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
                                    list_area_yi + (40 + (self.posicion_products * 20)),
                                    size_obj, thickness_obj, back=False)
@@ -201,7 +201,7 @@ class ShopIA:
             price = list_products['orange']
             self.shopping_list.append([object, price])
             # Show
-            text = f'{object} --> ${price}'
+            text = f'{object} --> Q{price}'
             frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
                                    list_area_yi + (40 + (self.posicion_products * 20)),
                                    size_obj, thickness_obj, back=False)
@@ -214,7 +214,7 @@ class ShopIA:
             price = list_products['broccoli']
             self.shopping_list.append([object, price])
             # Show
-            text = f'{object} --> ${price}'
+            text = f'{object} --> Q{price}'
             frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
                                    list_area_yi + (40 + (self.posicion_products * 20)),
                                    size_obj, thickness_obj, back=False)
@@ -227,7 +227,7 @@ class ShopIA:
             price = list_products['carrot']
             self.shopping_list.append([object, price])
             # Show
-            text = f'{object} --> ${price}'
+            text = f'{object} --> Q{price}'
             frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
                                    list_area_yi + (40 + (self.posicion_products * 20)),
                                    size_obj, thickness_obj, back=False)
@@ -240,7 +240,7 @@ class ShopIA:
             price = list_products['mouse']
             self.shopping_list.append([object, price])
             # Show
-            text = f'{object} --> ${price}'
+            text = f'{object} --> Q{price}'
             frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
                                    list_area_yi + (40 + (self.posicion_products * 20)),
                                    size_obj, thickness_obj, back=False)
@@ -253,7 +253,7 @@ class ShopIA:
             price = list_products['keyboard']
             self.shopping_list.append([object, price])
             # Show
-            text = f'{object} --> ${price}'
+            text = f'{object} --> Q{price}'
             frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
                                    list_area_yi + (40 + (self.posicion_products * 20)),
                                    size_obj, thickness_obj, back=False)
@@ -266,7 +266,7 @@ class ShopIA:
             price = list_products['book']
             self.shopping_list.append([object, price])
             # Show
-            text = f'{object} --> ${price}'
+            text = f'{object} --> Q{price}'
             frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
                                    list_area_yi + (40 + (self.posicion_products * 20)),
                                    size_obj, thickness_obj, back=False)
@@ -279,7 +279,7 @@ class ShopIA:
             price = list_products['clock']
             self.shopping_list.append([object, price])
             # Show
-            text = f'{object} --> ${price}'
+            text = f'{object} --> Q{price}'
             frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10, list_area_yi + (40 + (self.posicion_products*25)),
                                    size_obj, thickness_obj, back=False)
             self.posicion_products += 1
@@ -291,7 +291,7 @@ class ShopIA:
             price = list_products['scissors']
             self.shopping_list.append([object, price])
             # Show
-            text = f'{object} --> ${price}'
+            text = f'{object} --> Q{price}'
             frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
                                    list_area_yi + (40 + (self.posicion_products * 20)),
                                    size_obj, thickness_obj, back=False)
@@ -304,7 +304,7 @@ class ShopIA:
             price = list_products['toothbrush']
             self.shopping_list.append([object, price])
             # Show
-            text = f'{object} --> ${price}'
+            text = f'{object} --> Q{price}'
             frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
                                    list_area_yi + (40 + (self.posicion_products * 20)),
                                    size_obj, thickness_obj, back=False)
@@ -328,10 +328,10 @@ class ShopIA:
         payment = accumulative_balance - accumulative_price
         print(payment)
         if payment < 0:
-            text = f'Falta cancelar {abs(payment)}$'
+            text = f'Falta cancelar {abs(payment)}Q'
 
         elif payment > 0:
-            text = f'Su cambio es de: {abs(payment)}$'
+            text = f'Su cambio es de: {abs(payment)}Q'
             self.accumulative_price = 0
             self.total_balance = 0
 
@@ -457,10 +457,10 @@ class ShopIA:
             frame = self.prediction_model(clean_frame, frame, self.billModel, clase=1)
 
             # Accumulative Price Show
-            text_price = f'Compra total: {self.accumulative_price} $'
+            text_price = f'Compra total: {self.accumulative_price} Q'
             frame = self.draw_text(frame, (0, 255, 0), text_price, list_area_xi + 10, list_area_yf, 0.60, 1, back=False)
             # Total Balance Show
-            text_balance = f'Saldo total: {self.total_balance} $'
+            text_balance = f'Saldo total: {self.total_balance} Q'
             frame = self.draw_text(frame, (0, 255, 0), text_balance, list_area_xi + 10, list_area_yf + 30, 0.60, 1, back=False)
             # Payment
             frame = self.draw_text(frame, (0, 255, 0), self.pay, list_area_xi + - 300, list_area_yf + 30, 0.60, 1, back=False)
