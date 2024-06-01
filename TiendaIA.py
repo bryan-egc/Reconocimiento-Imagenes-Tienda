@@ -6,7 +6,7 @@ class ShopIA:
     # Init
     def __int__(self):
         # VideoCapture
-        self.cap = cv2.VideoCapture(1)
+        self.cap = cv2.VideoCapture(1) # Cambiar el número de la camara acorde a las camaras configuradas en nuestro equipo
         self.cap.set(3, 1280)
         self.cap.set(4, 720)
 
@@ -17,16 +17,13 @@ class ShopIA:
 
         billModel = YOLO('Modelos/billBank2.onnx')
         self.billModel = billModel
-
-        # CLASES:
-        # Objects
+        
         #clsObject = ObjectModel.names
         clsObject = ['bottle','cup','fork','knife','spoon','banana','apple',
                      'orange','broccoli','carrot','hot dog','pizza','donut',
                      'mouse','keyboard','cell phone','book','clock','scissors','toothbrush']
         self.clsObject = clsObject
 
-        # Bills Bank
         clsBillBank = ['Billete10', 'Billete20', 'Billete50']
         self.clsBillBank = clsBillBank
 
@@ -312,11 +309,11 @@ class ShopIA:
     # Balance process
     def balance_process(self, bill_type):
         if bill_type == 'Billete10':
-            self.balance = 10000
+            self.balance = 10
         elif bill_type == 'Billete20':
-            self.balance = 20000
+            self.balance = 20
         elif bill_type == 'Billete50':
-            self.balance = 50000
+            self.balance = 50
 
     # Payment process
     def payment_process(self, accumulative_price, accumulative_balance):
