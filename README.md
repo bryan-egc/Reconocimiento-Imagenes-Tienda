@@ -52,15 +52,26 @@ Este proyecto utiliza técnicas de inteligencia artificial para reconocer y clas
     - Asegúrate de tener Python 3.x instalado.
     - Instala las dependencias requeridas (puedes utilizar un entorno virtual):
     ```bash
-        pip install -r requirements.txt
+        pip install opencv-python
+        pip install ultralytics
 4. **Descargar los modelos:**
     - Descarga los modelos YOLOv8 desde este enlace: https://drive.google.com/drive/folders/1RlE-Hz7JqQZ5wcb5P_Ooc8ypKeC1nCDZ
     - Coloca los archivos descargados en la carpeta Modelos dentro del directorio del proyecto.
 5. **Ejecutar el script principal:**
     ```bash
-        python main.py
+        python Tienda.py
 
-## Observaciones
+## Ejemplos de uso
+
+- **Ejemplo 1:** Detección de bananas y botella con sus correspondientes porcentajes de confianza.
+![image](https://github.com/bryan-egc/Reconocimiento-Imagenes-Tienda/assets/41811332/cfe704d4-a74a-4ce5-a99c-c230ae807429)
+
+- **Ejemplo 2:** Detección de mouse y teclado con sus correspondientes porcentajes de confianza.
+![image](https://github.com/bryan-egc/Reconocimiento-Imagenes-Tienda/assets/41811332/078e3a87-ffcf-48fb-b289-76a27bdb915e)
+
+- **Ejemplo 3:** Detección de cuchillo, cuchara y tijeras con sus correspondientes porcentajes de confianza.
+![image](https://github.com/bryan-egc/Reconocimiento-Imagenes-Tienda/assets/41811332/3952f857-ef7f-4070-b25a-2ef37d73b6ac)
+
 
 ## Observaciones
 
@@ -74,7 +85,7 @@ Este proyecto utiliza técnicas de inteligencia artificial para reconocer y clas
 
 - **Entorno de Desarrollo:** Se recomienda utilizar un entorno virtual para manejar las dependencias del proyecto y evitar conflictos con otras instalaciones de Python en tu sistema.
 
-- **Actualización de Dependencias:** Asegúrate de que las dependencias estén actualizadas para evitar problemas de compatibilidad. Puedes actualizar las dependencias ejecutando `pip install --upgrade -r requirements.txt`.
+- **Actualización de Dependencias:** Asegúrate de que las dependencias estén actualizadas para evitar problemas de compatibilidad.
 
 - **Errores Comunes:** Si encuentras problemas al ejecutar el script, verifica que todas las dependencias estén instaladas correctamente y que los modelos estén en la ubicación correcta. Consulta los mensajes de error para obtener pistas sobre cómo resolver los problemas.
 
