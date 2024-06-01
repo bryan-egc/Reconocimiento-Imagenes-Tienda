@@ -1,11 +1,11 @@
-# Class
+# importando clase
 import TiendaIA as shop
 
-# Shop
+# funcion
 def main():
-    # Class
+    # Clase iniciada
     class_shop = shop.ShopIA()
-    # Stream
+    # extensión llama
     class_shop.tiendaIA()
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 import TiendaIA as shop
 
-# Shop
+# TIENDA
 def main():
     class_shop = shop.ShopIA()
     cap = class_shop.__int__()

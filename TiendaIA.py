@@ -69,7 +69,7 @@ class ShopIA:
 
     # MarketPlace list
     def marketplace_list(self, frame, object):
-        list_products = {'donut':25, 'cell phone':20000, 'bottle':10, 'cup':20, 'fork':3, 'knife':10, 'spoon':20,
+        list_products = {'donut':25, 'cell phone':3500, 'bottle':10, 'cup':20, 'fork':3, 'knife':10, 'spoon':20,
                          'banana':5, 'apple':10, 'orange':5, 'broccoli':5, 'carrot':10, 'mouse':600, 'keyboard':1000,
                          'book':250, 'clock':4000, 'scissors':25, 'toothbrush':20}
 
