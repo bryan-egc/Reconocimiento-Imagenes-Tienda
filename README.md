@@ -85,7 +85,7 @@ Este proyecto utiliza técnicas de inteligencia artificial para reconocer y clas
 
 - **Entorno de Desarrollo:** Se recomienda utilizar un entorno virtual para manejar las dependencias del proyecto y evitar conflictos con otras instalaciones de Python en tu sistema.
 
-- **Actualización de Dependencias:** Asegúrate de que las dependencias estén actualizadas para evitar problemas de compatibilidad. Puedes actualizar las dependencias ejecutando `pip install --upgrade -r requirements.txt`.
+- **Actualización de Dependencias:** Asegúrate de que las dependencias estén actualizadas para evitar problemas de compatibilidad.
 
 - **Errores Comunes:** Si encuentras problemas al ejecutar el script, verifica que todas las dependencias estén instaladas correctamente y que los modelos estén en la ubicación correcta. Consulta los mensajes de error para obtener pistas sobre cómo resolver los problemas.
 
