@@ -58,7 +58,7 @@ Este proyecto utiliza técnicas de inteligencia artificial para reconocer y clas
     - Coloca los archivos descargados en la carpeta Modelos dentro del directorio del proyecto.
 5. **Ejecutar el script principal:**
     ```bash
-        python main.py
+        python Tienda.py
 
 ## Observaciones
 
