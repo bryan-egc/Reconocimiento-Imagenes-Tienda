@@ -1,9 +1,9 @@
 
 # Proyecto Final - Inteligencia Artificial
 
-Proyecto final - curso Inteligencia Articial
+Proyecto final - curso Inteligencia Articial---
 
-## 🚀 Integrantes del grupo
+## 🚀 Integrantes del grupo  
 
 🙍‍♂️: Bryan Ernesto Gámez Cipriano
 
