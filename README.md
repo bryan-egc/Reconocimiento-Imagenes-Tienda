@@ -1,7 +1,7 @@
 
 # Proyecto Final - Inteligencia Artificial
 
-Proyecto final - curso Inteligencia Articial---
+Proyecto Final - Curso Inteligencia Articial
 
 ## 🚀 Integrantes del grupo  
 
