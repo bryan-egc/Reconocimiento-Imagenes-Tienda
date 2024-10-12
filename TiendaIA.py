@@ -1,12 +1,13 @@
 import cv2
 from ultralytics import YOLO
 import math
+import requests
 
 class ShopIA:
     # Init
     def __int__(self):
         # VideoCapture
-        self.cap = cv2.VideoCapture(1) # Cambiar el número de la camara acorde a las camaras configuradas en nuestro equipo
+        self.cap = cv2.VideoCapture(0)
         self.cap.set(3, 1280)
         self.cap.set(4, 720)
 
@@ -17,13 +18,14 @@ class ShopIA:
 
         billModel = YOLO('Modelos/billBank2.onnx')
         self.billModel = billModel
-        
+
+        # CLASES:
+        # Objects
         #clsObject = ObjectModel.names
-        clsObject = ['bottle','cup','fork','knife','spoon','banana','apple',
-                     'orange','broccoli','carrot','hot dog','pizza','donut',
-                     'mouse','keyboard','cell phone','book','clock','scissors','toothbrush']
+        clsObject = ['donut', 'cell phone', 'bottle', 'cup', 'fork', 'knife', 'spoon', 'banana', 'apple', 'orange', 'backpack', 'dog', 'mouse', 'keyboard', 'book', 'clock', 'scissors', 'toothbrush']
         self.clsObject = clsObject
 
+        # Bills Bank
         clsBillBank = ['Billete10', 'Billete20', 'Billete50']
         self.clsBillBank = clsBillBank
 
@@ -66,254 +68,46 @@ class ShopIA:
 
     # MarketPlace list
     def marketplace_list(self, frame, object):
-        list_products = {'donut':25, 'cell phone':3500, 'bottle':10, 'cup':20, 'fork':3, 'knife':10, 'spoon':20,
-                         'banana':5, 'apple':10, 'orange':5, 'broccoli':5, 'carrot':10, 'mouse':600, 'keyboard':1000,
-                         'book':250, 'clock':600, 'scissors':25, 'toothbrush':20}
+        # Realiza una solicitud GET a la API para obtener la información del producto
+        try:
+            response = requests.get(f'https://api-proyecto-seminario.onrender.com/products/{object}')
+            if response.status_code == 200:
+                product = response.json()
+                price = product['price']
 
-        # Text Config
-        list_area_xi, list_area_yi, list_area_xf, list_area_yf = self.area(frame, 0.7739, 0.6250, 0.9649, 0.9444)
-        size_obj, thickness_obj = 0.60, 1
-
-        # Add shopping list with price
-        # Dona
-        if object == 'donut' not in [item[0] for item in self.shopping_list]:
-            price = list_products['donut']
-            self.shopping_list.append([object, price])
-            # Show
-            text = f'{object} --> Q{price}'
-            frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
-                                   list_area_yi + (40 + (self.posicion_products * 20)),
-                                   size_obj, thickness_obj, back=False)
-            self.posicion_products += 1
-            # Price
-            self.accumulative_price = self.accumulative_price + price
-
-        # Telefono
-        if object == 'cell phone' not in [item[0] for item in self.shopping_list]:
-            price = list_products['cell phone']
-            self.shopping_list.append([object, price])
-            # Show
-            text = f'{object} --> Q{price}'
-            frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
-                                   list_area_yi + (40 + (self.posicion_products * 20)),
-                                   size_obj, thickness_obj, back=False)
-            self.posicion_products += 1
-            # Price
-            self.accumulative_price = self.accumulative_price + price
-
-        # Botella
-        if object == 'bottle' not in [item[0] for item in self.shopping_list]:
-            price = list_products['bottle']
-            self.shopping_list.append([object, price])
-            # Show
-            text = f'{object} --> Q{price}'
-            frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
-                                   list_area_yi + (40 + (self.posicion_products * 20)),
-                                   size_obj, thickness_obj, back=False)
-            self.posicion_products += 1
-            # Price
-            self.accumulative_price = self.accumulative_price + price
-
-        # Copa
-        if object == 'cup' not in [item[0] for item in self.shopping_list]:
-            price = list_products['cup']
-            self.shopping_list.append([object, price])
-            # Show
-            text = f'{object} --> Q{price}'
-            frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
-                                   list_area_yi + (40 + (self.posicion_products * 20)),
-                                   size_obj, thickness_obj, back=False)
-            self.posicion_products += 1
-            # Price
-            self.accumulative_price = self.accumulative_price + price
-
-        # Tenedor
-        if object == 'fork' not in [item[0] for item in self.shopping_list]:
-            price = list_products['fork']
-            self.shopping_list.append([object, price])
-            # Show
-            text = f'{object} --> Q{price}'
-            frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,list_area_yi + (40 + (self.posicion_products * 25)),
-                                   size_obj, thickness_obj,back=False)
-            self.posicion_products += 1
-            # Price
-            self.accumulative_price = self.accumulative_price + price
-
-        # Cuchillo
-        if object == 'knife' not in [item[0] for item in self.shopping_list]:
-            price = list_products['knife']
-            self.shopping_list.append([object, price])
-            # Show
-            text = f'{object} --> Q{price}'
-            frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
-                                   list_area_yi + (40 + (self.posicion_products * 20)),
-                                   size_obj, thickness_obj, back=False)
-            self.posicion_products += 1
-            # Price
-            self.accumulative_price = self.accumulative_price + price
-
-        # Cuchara
-        if object == 'spoon' not in [item[0] for item in self.shopping_list]:
-            price = list_products['spoon']
-            self.shopping_list.append([object, price])
-            # Show
-            text = f'{object} --> Q{price}'
-            frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
-                                   list_area_yi + (40 + (self.posicion_products * 20)),
-                                   size_obj, thickness_obj, back=False)
-            self.posicion_products += 1
-            # Price
-            self.accumulative_price = self.accumulative_price + price
-        # Banana
-        if object == 'banana' not in [item[0] for item in self.shopping_list]:
-            price = list_products['banana']
-            self.shopping_list.append([object, price])
-            # Show
-            text = f'{object} --> Q{price}'
-            frame = self.draw_text(frame, (0,255,0), text, list_area_xi+10, list_area_yi+(40 + (self.posicion_products*20)),
-                                   size_obj, thickness_obj, back=False)
-            self.posicion_products += 1
-            # Price
-            self.accumulative_price = self.accumulative_price + price
-        # Manzana
-        if object == 'apple' not in [item[0] for item in self.shopping_list]:
-            price = list_products['apple']
-            self.shopping_list.append([object, price])
-            # Show
-            text = f'{object} --> Q{price}'
-            frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
-                                   list_area_yi + (40 + (self.posicion_products * 20)),
-                                   size_obj, thickness_obj, back=False)
-            self.posicion_products += 1
-            # Price
-            self.accumulative_price = self.accumulative_price + price
-
-        # Naranja
-        if object == 'orange' not in [item[0] for item in self.shopping_list]:
-            price = list_products['orange']
-            self.shopping_list.append([object, price])
-            # Show
-            text = f'{object} --> Q{price}'
-            frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
-                                   list_area_yi + (40 + (self.posicion_products * 20)),
-                                   size_obj, thickness_obj, back=False)
-            self.posicion_products += 1
-            # Price
-            self.accumulative_price = self.accumulative_price + price
-
-        # Brocoli
-        if object == 'broccoli' not in [item[0] for item in self.shopping_list]:
-            price = list_products['broccoli']
-            self.shopping_list.append([object, price])
-            # Show
-            text = f'{object} --> Q{price}'
-            frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
-                                   list_area_yi + (40 + (self.posicion_products * 20)),
-                                   size_obj, thickness_obj, back=False)
-            self.posicion_products += 1
-            # Price
-            self.accumulative_price = self.accumulative_price + price
-
-        # Zanahoria
-        if object == 'carrot' not in [item[0] for item in self.shopping_list]:
-            price = list_products['carrot']
-            self.shopping_list.append([object, price])
-            # Show
-            text = f'{object} --> Q{price}'
-            frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
-                                   list_area_yi + (40 + (self.posicion_products * 20)),
-                                   size_obj, thickness_obj, back=False)
-            self.posicion_products += 1
-            # Price
-            self.accumulative_price = self.accumulative_price + price
-
-        # Mouse
-        if object == 'mouse' not in [item[0] for item in self.shopping_list]:
-            price = list_products['mouse']
-            self.shopping_list.append([object, price])
-            # Show
-            text = f'{object} --> Q{price}'
-            frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
-                                   list_area_yi + (40 + (self.posicion_products * 20)),
-                                   size_obj, thickness_obj, back=False)
-            self.posicion_products += 1
-            # Price
-            self.accumulative_price = self.accumulative_price + price
-
-        # Teclado
-        if object == 'keyboard' not in [item[0] for item in self.shopping_list]:
-            price = list_products['keyboard']
-            self.shopping_list.append([object, price])
-            # Show
-            text = f'{object} --> Q{price}'
-            frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
-                                   list_area_yi + (40 + (self.posicion_products * 20)),
-                                   size_obj, thickness_obj, back=False)
-            self.posicion_products += 1
-            # Price
-            self.accumulative_price = self.accumulative_price + price
-
-        # Libro
-        if object == 'book' not in [item[0] for item in self.shopping_list]:
-            price = list_products['book']
-            self.shopping_list.append([object, price])
-            # Show
-            text = f'{object} --> Q{price}'
-            frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
-                                   list_area_yi + (40 + (self.posicion_products * 20)),
-                                   size_obj, thickness_obj, back=False)
-            self.posicion_products += 1
-            # Price
-            self.accumulative_price = self.accumulative_price + price
-
-        # Reloj
-        if object == 'clock' not in [item[0] for item in self.shopping_list]:
-            price = list_products['clock']
-            self.shopping_list.append([object, price])
-            # Show
-            text = f'{object} --> Q{price}'
-            frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10, list_area_yi + (40 + (self.posicion_products*25)),
-                                   size_obj, thickness_obj, back=False)
-            self.posicion_products += 1
-            # Price
-            self.accumulative_price = self.accumulative_price + price
-
-        # Tijeras
-        if object == 'scissors' not in [item[0] for item in self.shopping_list]:
-            price = list_products['scissors']
-            self.shopping_list.append([object, price])
-            # Show
-            text = f'{object} --> Q{price}'
-            frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
-                                   list_area_yi + (40 + (self.posicion_products * 20)),
-                                   size_obj, thickness_obj, back=False)
-            self.posicion_products += 1
-            # Price
-            self.accumulative_price = self.accumulative_price + price
-
-        # Cepillo de dientes
-        if object == 'toothbrush' not in [item[0] for item in self.shopping_list]:
-            price = list_products['toothbrush']
-            self.shopping_list.append([object, price])
-            # Show
-            text = f'{object} --> Q{price}'
-            frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
-                                   list_area_yi + (40 + (self.posicion_products * 20)),
-                                   size_obj, thickness_obj, back=False)
-            self.posicion_products += 1
-            # Price
-            self.accumulative_price = self.accumulative_price + price
-
+                # Asegúrate de convertir el precio a tipo numérico (int o float)
+                price = float(price)  # O float(price) si tu precio tiene decimales
+                
+                if object not in [item[0] for item in self.shopping_list]:
+                    self.shopping_list.append([object, price])
+                    
+                    # Configuración de texto
+                    list_area_xi, list_area_yi, list_area_xf, list_area_yf = self.area(frame, 0.7739, 0.6250, 0.9649, 0.9444)
+                    size_obj, thickness_obj = 0.60, 1
+                    
+                    # Mostrar el producto y el precio en la lista de compras
+                    text = f'{object} --> Q{price}'
+                    frame = self.draw_text(frame, (0, 255, 0), text, list_area_xi + 10,
+                                        list_area_yi + (40 + (self.posicion_products * 20)),
+                                        size_obj, thickness_obj, back=False)
+                    self.posicion_products += 1
+                    self.accumulative_price += price
+            else:
+                # En caso de que no se encuentre el producto o haya un error
+                print(f"Producto no encontrado: {object}")
+        except requests.exceptions.RequestException as e:
+            print(f"Error al conectar con la API: {e}")
+        
         return frame
 
     # Balance process
     def balance_process(self, bill_type):
         if bill_type == 'Billete10':
-            self.balance = 10
+            self.balance = 10000
         elif bill_type == 'Billete20':
-            self.balance = 20
+            self.balance = 20000
         elif bill_type == 'Billete50':
-            self.balance = 50
+            self.balance = 50000
 
     # Payment process
     def payment_process(self, accumulative_price, accumulative_balance):
@@ -333,7 +127,6 @@ class ShopIA:
             self.total_balance = 0
 
         return text
-
 
     # INFERENCE
     def prediction_model(self, clean_frame, frame, model, clase):
@@ -364,17 +157,21 @@ class ShopIA:
                 # Confidence
                 conf = math.ceil(box.conf[0])
 
-                if clase == 0:
-                    # Draw
-                    objeto = self.clsObject[cls]
-                    text_obj = f'{self.clsObject[cls]} {int(conf * 100)}%'
-                    # Marketplace list
-                    frame = self.marketplace_list(frame, objeto)
+                # Obtener el nombre de la clase detectada
+                class_name = self.ObjectModel.names[cls]  # Esto obtiene el nombre de la clase del modelo YOLO
 
-                    # Draw
-                    size_obj, thickness_obj = 0.75, 1
-                    frame = self.draw_text(frame, (0, 255, 0), text_obj, x1, y1, size_obj, thickness_obj, back=True)
-                    frame = self.draw_area(frame, (0, 255, 0), x1, y1, x2, y2)
+                # Verifica si el nombre de la clase está en tu lista de interés
+                if class_name in self.clsObject:
+                    if clase == 0:
+                        # Draw
+                        text_obj = f'{class_name} {int(conf * 100)}%'
+                        # Marketplace list
+                        frame = self.marketplace_list(frame, class_name)
+
+                        # Draw
+                        size_obj, thickness_obj = 0.75, 1
+                        frame = self.draw_text(frame, (0, 255, 0), text_obj, x1, y1, size_obj, thickness_obj, back=True)
+                        frame = self.draw_area(frame, (0, 255, 0), x1, y1, x2, y2)
 
                 if clase == 1:
                     # Draw
@@ -386,8 +183,6 @@ class ShopIA:
                     size_obj, thickness_obj = 0.75, 1
                     frame = self.draw_text(frame, (0, 255, 0), text_obj, x1, y1, size_obj, thickness_obj, back=True)
                     frame = self.draw_area(frame, (0, 255, 0), x1, y1, x2, y2)
-
-                    #break
         return frame
 
     # Main
@@ -396,7 +191,7 @@ class ShopIA:
             # Frames
             ret, frame = cap.read()
             # Read keyboard
-            t = cv2.waitKey(5)
+            t = cv2.waitKey(50)
 
             # Frame Object Detect
             clean_frame = frame.copy()
