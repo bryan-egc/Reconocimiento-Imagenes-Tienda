@@ -37,19 +37,23 @@ class ShopIA:
         return self.cap
 
     # DRAW FUNCTIONS
-    # Area
-    def draw_area(self, img, color, xi, yi, xf, yf):
-        img = cv2.rectangle(img, (xi, yi), (xf, yf), color, 1, 1)
+    # Cambiar a colores más modernos y estilos visuales
+    def draw_area(self, img, color, xi, yi, xf, yf, thickness=2, style='solid'):
+        overlay = img.copy()
+        # Fondo semitransparente para las áreas
+        cv2.rectangle(overlay, (xi, yi), (xf, yf), color, -1)  # -1 para hacer el relleno
+        img = cv2.addWeighted(overlay, 0.3, img, 0.7, 0)  # Añade transparencia
         return img
 
-    # Text
-    def draw_text(self, img, color, text, xi, yi, size, thickness, back = False):
+    # Dibujar texto con sombra y colores más modernos
+    def draw_text(self, img, color, text, xi, yi, size, thickness, back=True):
         sizetext = cv2.getTextSize(text, cv2.FONT_HERSHEY_DUPLEX, size, thickness)
         dim = sizetext[0]
         baseline = sizetext[1]
-        if back == True:
-            img = cv2.rectangle(img, (xi, yi - dim[1] - baseline), (xi + dim[0], yi + baseline - 7),(0, 0, 0), cv2.FILLED)
-        img = cv2.putText(img, text, (xi, yi - 5), cv2.FONT_HERSHEY_DUPLEX, size, color, thickness)
+        # Sombra para el texto
+        cv2.putText(img, text, (xi + 2, yi + 2), cv2.FONT_HERSHEY_DUPLEX, size, (0, 0, 0), thickness+2)
+        # Texto principal con color
+        img = cv2.putText(img, text, (xi, yi), cv2.FONT_HERSHEY_DUPLEX, size, color, thickness)
         return img
 
     # Line
@@ -65,6 +69,19 @@ class ShopIA:
         xf, yf = int(xf * an), int(yf * al)
 
         return xi, yi, xf, yf
+    
+ # Dibujar los cuadros de detección más estilizados
+    def draw_colorful_bbox(self, img, bbox, label, color=(50, 255, 50)):
+        x1, y1, x2, y2 = bbox
+        overlay = img.copy()
+        # Dibujar cuadros semitransparentes
+        cv2.rectangle(overlay, (x1, y1), (x2, y2), color, -1)
+        img = cv2.addWeighted(overlay, 0.4, img, 0.6, 0)
+        # Añadir borde al cuadro
+        cv2.rectangle(img, (x1, y1), (x2, y2), color, 2)
+        # Texto en el cuadro
+        cv2.putText(img, label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
+        return img
 
     # MarketPlace list
     def marketplace_list(self, frame, object):
@@ -172,7 +189,7 @@ class ShopIA:
                         size_obj, thickness_obj = 0.75, 1
                         frame = self.draw_text(frame, (0, 255, 0), text_obj, x1, y1, size_obj, thickness_obj, back=True)
                         frame = self.draw_area(frame, (0, 255, 0), x1, y1, x2, y2)
-
+                        
                 if clase == 1:
                     # Draw
                     bill_type = self.clsBillBank[cls]
